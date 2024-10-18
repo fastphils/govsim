@@ -1,20 +1,28 @@
-import { NodeEditor, GetSchemes, ClassicPreset } from "rete";
+import { NodeEditor, GetSchemes, ClassicPreset, BaseSchemes } from "rete";
 import { AreaPlugin, AreaExtensions } from "rete-area-plugin";
 import {
   ConnectionPlugin,
-  Presets as ConnectionPresets
+  Presets as ConnectionPresets,
+  ClassicFlow,
+  getSourceTarget,
 } from "rete-connection-plugin";
 import {
   SveltePlugin,
   Presets,
   SvelteArea2D
 } from "rete-svelte-plugin";
+import {
+  AutoArrangePlugin,
+  Presets as ArrangePresets,
+} from "rete-auto-arrange-plugin";
 
-type Schemes = GetSchemes<
-  ClassicPreset.Node,
-  ClassicPreset.Connection<ClassicPreset.Node, ClassicPreset.Node>
->;
-type AreaExtra = SvelteArea2D<Schemes>;
+import { Schemes, AreaExtra } from "./types";
+
+// type Schemes = GetSchemes<
+//   ClassicPreset.Node,
+//   ClassicPreset.Connection<ClassicPreset.Node, ClassicPreset.Node>
+// >;
+// type AreaExtra = SvelteArea2D<Schemes>;
 
 export async function createEditor(container: HTMLElement) {
   const socket = new ClassicPreset.Socket("socket");
@@ -23,6 +31,7 @@ export async function createEditor(container: HTMLElement) {
   const area = new AreaPlugin<Schemes, AreaExtra>(container);
   const connection = new ConnectionPlugin<Schemes, AreaExtra>();
   const render = new SveltePlugin<Schemes, AreaExtra>();
+
 
   AreaExtensions.selectableNodes(area, AreaExtensions.selector(), {
     accumulating: AreaExtensions.accumulateOnCtrl()
