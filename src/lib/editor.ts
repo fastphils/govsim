@@ -11,10 +11,6 @@ import {
   Presets,
   SvelteArea2D
 } from "rete-svelte-plugin";
-import {
-  AutoArrangePlugin,
-  Presets as ArrangePresets,
-} from "rete-auto-arrange-plugin";
 
 import { Schemes, AreaExtra } from "./types";
 
@@ -54,10 +50,17 @@ export async function createEditor(container: HTMLElement) {
 
   const b = new ClassicPreset.Node("B");
   b.addControl("b", new ClassicPreset.InputControl("text", { initial: "b" }));
+  b.addOutput("b", new ClassicPreset.Output(socket));
   b.addInput("b", new ClassicPreset.Input(socket));
   await editor.addNode(b);
 
+  const c = new ClassicPreset.Node("C");
+  c.addControl("c", new ClassicPreset.InputControl("text", { initial: "c" }));
+  c.addInput("c", new ClassicPreset.Input(socket));
+  await editor.addNode(c);
+
   await editor.addConnection(new ClassicPreset.Connection(a, "a", b, "b"));
+  await editor.addConnection(new ClassicPreset.Connection(b, "b", c, "c"));
 
   await area.translate(a.id, { x: 0, y: 0 });
   await area.translate(b.id, { x: 270, y: 0 });

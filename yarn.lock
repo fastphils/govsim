@@ -786,13 +786,6 @@ rete-area-plugin@^2.0.0:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-rete-auto-arrange-plugin@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/rete-auto-arrange-plugin/-/rete-auto-arrange-plugin-2.0.2.tgz#e22c967359f8e5853f474a4c6564f194d7268e29"
-  integrity sha512-VLTnVb9tqHfQKkFMZzpYgYxDWcIa+nXHRC+Po0k+gUh2zJqegkx8bFSA1n6VkMv+wPYa9EnWsTMfUDD3k1QEzg==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
-
 rete-connection-plugin@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/rete-connection-plugin/-/rete-connection-plugin-2.0.0.tgz"

@@ -32,7 +32,5 @@
 		"vite": "^4.3.0"
 	},
 	"type": "module",
-	"dependencies": {
-		"rete-auto-arrange-plugin": "^2.0.2"
-	}
+	"dependencies": {}
 }
